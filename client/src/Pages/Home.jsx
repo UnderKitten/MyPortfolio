@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 const Home = () => {
   return (
     <div className="px-10">
-      <div className="flex sm:flex-row flex-col-reverse text-[30px] justify-between items-center gap-1">
+      <div className="flex sm:flex-row flex-col-reverse text-[45px] justify-between items-center gap-1">
         <div>
           <h1>Hello there!</h1>
           <h1>
@@ -25,10 +25,10 @@ const Home = () => {
       </div>
 
       <div className="pt-25">
-        <h2 className="text-[30px] uppercase">
+        <h2 className="text-[35px] uppercase">
           Let me <span className="text-fuchsia-500">introduce</span> myself
         </h2>
-        <p>
+        <p className="text-[25px]">
           I’m an experienced software developer with over 5 years delivering
           2D/3D and VR/AR interactive applications using Unity and C#. Currently
           growing my expertise in back-end and full-stack development, focusing
@@ -41,7 +41,7 @@ const Home = () => {
         <h2 className="text-[30px] uppercase">
           Beyond <span className="text-fuchsia-500">code</span>
         </h2>
-        <p>
+        <p className="text-[25px]">
           When I’m not coding, you’ll find me playing soccer, cycling around the
           city, or enjoying video games. I also spend time learning guitar,
           experimenting with 3D printing, and exploring the world of flying
@@ -52,10 +52,10 @@ const Home = () => {
       </div>
 
       <div className="pt-25">
-        <h2 className="text-[30px] uppercase mb-4">
+        <h2 className="text-[35px] uppercase mb-4">
           Let's <span className="text-fuchsia-500">connect</span>
         </h2>
-        <p className="mb-3">You can find me on:</p>
+        <p className="mb-3 text-[25px]">You can find me on:</p>
         <ul className="flex gap-6 justify-start mb-4 text-2xl">
           <li>
             <a
@@ -80,7 +80,7 @@ const Home = () => {
             </a>
           </li>
         </ul>
-        <p className="text-lg">mchurzin@outlook.com</p>
+        <p className="text-[20px]">mchurzin@outlook.com</p>
       </div>
     </div>
   );
