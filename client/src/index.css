@@ -4,8 +4,14 @@
   font-family: "Roboto", sans-serif;
 }
 
-body {
-  
-  
-  color: white;
+@keyframes moveGrid {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 40px; 
+  }
+}
+.animate-grid {
+  animation: moveGrid 10s linear infinite;
 }
