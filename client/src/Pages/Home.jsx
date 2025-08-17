@@ -19,7 +19,7 @@ const Home = () => {
           </div>
         </div>
         <img
-          className="rounded-full h-50"
+          className="rounded-full sm:h-100 h-50"
           src="../src/assets/profile.jpg"
           alt="Profile picture"
         />
