@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const ProjectCard = (props) => {
   return (
@@ -15,13 +15,9 @@ const ProjectCard = (props) => {
         {props.shortDescription}
       </p>
       <div className="flex gap-4">
-        <a
-          href={props.link}
-          target="_blank"
-          className="flex items-center gap-2 px-4 py-2 rounded bg-fuchsia-600/70 hover:bg-fuchsia-800 text-white font-semibold shadow transition"
-        >
+        <Link to={`/projects/${props.id}`} state={{ props }} className="flex items-center gap-2 px-4 py-2 rounded bg-fuchsia-600/70 hover:bg-fuchsia-800 text-white font-semibold shadow transition">
           Read more
-        </a>
+        </Link>
       </div>
     </div>
   );

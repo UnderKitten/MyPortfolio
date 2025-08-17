@@ -15,6 +15,8 @@ export async function fetchProjects() {
     image: item.fields.image
       ? 'https:' + item.fields.image.fields.file.url
       : null,
-    imageAltTitle: item.fields.altTitle
+    imageAltTitle: item.fields.altTitle,
+    link: item.fields.link,
+    gitLink: item.fields.gitLink,
   }));
 }
