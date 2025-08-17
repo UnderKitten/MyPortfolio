@@ -1,12 +1,25 @@
-import React from 'react'
-import ProjectCard from '../Components/ProjectCard'
+import ProjectCard from "../Components/ProjectCard";
+import useSWR from "swr";
+import { fetchProjects } from "../utils/contentful";
 
 const Projects = () => {
-  return (
-    <div>
-      <ProjectCard/>
-    </div>
-  )
-}
+  const {
+    data: projects,
+    error,
+    isLoading,
+  } = useSWR("projects", fetchProjects);
 
-export default Projects
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading projects.</div>;
+
+  return (
+    <div className="flex flex-wrap gap-6 justify-center">
+      {projects &&
+        projects.map((project) => (
+          <ProjectCard key={project.id} {...project} />
+        ))}
+    </div>
+  );
+};
+
+export default Projects;
