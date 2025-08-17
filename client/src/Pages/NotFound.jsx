@@ -1,8 +1,10 @@
-import React from 'react'
+import ErrorMessage from "../Components/ErrorMessage"
 
 const NotFound = () => {
   return (
-    <div>NOT FOUND</div>
+    <div>
+      <ErrorMessage />
+    </div>
   )
 }
 
