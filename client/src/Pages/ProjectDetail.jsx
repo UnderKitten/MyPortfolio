@@ -11,7 +11,7 @@ const ProjectDetail = () => {
 
   const project = passedProject || projects?.find((p) => p.id === id);
 
-  if (!project) return <div>Loading or project not found.</div>;
+  if (!project) return <ErrorMessage />;
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 items-center mt-8 mx-auto max-w-7xl rounded-xl bg-white/5 border border-fuchsia-700/40 shadow-lg backdrop-blur-xl p-8">

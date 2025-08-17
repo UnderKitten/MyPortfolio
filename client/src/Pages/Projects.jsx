@@ -1,6 +1,8 @@
 import ProjectCard from "../Components/ProjectCard";
 import useSWR from "swr";
 import { fetchProjects } from "../utils/contentful";
+import LoadingSpinner from "../Components/Loading";
+import ErrorMessage from "../Components/ErrorMessage";
 
 const Projects = () => {
   const {
@@ -9,8 +11,8 @@ const Projects = () => {
     isLoading,
   } = useSWR("projects", fetchProjects);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading projects.</div>;
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage />;
 
   return (
     <div className="flex flex-wrap gap-6 justify-center">
