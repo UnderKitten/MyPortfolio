@@ -10,7 +10,7 @@ const Home = () => {
           <h1>
             My name is{" "}
             <strong className="text-fuchsia-500 uppercase">
-              Maxim CHurzin
+              Maxim Churzin
             </strong>
           </h1>
           <div className="text-fuchsia-500 font-bold pt-5">

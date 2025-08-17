@@ -15,46 +15,51 @@ const NavBar = () => {
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <header className="fixed w-full p-4 bg-gray-900/70 backdrop-blur-md border-b border-white/10 z-50">
-      <div className="flex flex-row items-center justify-between px-8">
+    <header className="fixed w-full p-4 bg-gray-900/80 backdrop-blur-lg border-b border-fuchsia-600/40 shadow-lg z-50">
+  <div className="flex flex-row items-center justify-between px-8">
+    <Link
+      to="/"
+      preventScrollReset
+      className="text-fuchsia-500 text-[28px] font-extrabold tracking-wider drop-shadow-md"
+    >
+      MC.
+    </Link>
+    <nav className="hidden sm:flex justify-between items-center gap-6">
+      {navItems.map((item) => (
         <Link
-          to="/"
-          preventScrollReset
-          className="text-fuchsia-500 text-[25px]"
+          key={item.name}
+          to={item.to}
+          className="text-white/90 hover:text-fuchsia-400 transition-colors duration-300 font-semibold tracking-wide"
         >
-          MC.
+          {item.name}
         </Link>
-        <nav className="hidden sm:flex justify-between items-center gap-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.to}
-              className="hover:text-fuchsia-200"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-        <button onClick={toggleMenu} className="sm:hidden">
-          {showMenu ? <GrClose /> : <GiHamburgerMenu />}
-        </button>
-      </div>
+      ))}
+    </nav>
+    <button
+      onClick={toggleMenu}
+      className="sm:hidden text-fuchsia-500 hover:text-fuchsia-400 transition-colors duration-300"
+      aria-label="Toggle menu"
+    >
+      {showMenu ? <GrClose size={28} /> : <GiHamburgerMenu size={28} />}
+    </button>
+  </div>
 
-      {showMenu && (
-        <nav className="sm:hidden flex flex-col items-center gap-1 text-center mt-2">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.to}
-              onClick={closeMenu}
-              className="hover:text-fuchsia-200 w-full"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-      )}
-    </header>
+  {showMenu && (
+    <nav className="sm:hidden flex flex-col items-center gap-2 text-center mt-4 backdrop-blur-md rounded-md shadow-lg p-4 mx-4">
+      {navItems.map((item) => (
+        <Link
+          key={item.name}
+          to={item.to}
+          onClick={closeMenu}
+          className="text-white hover:text-fuchsia-400 w-full py-2 font-medium transition-colors duration-300 rounded"
+        >
+          {item.name}
+        </Link>
+      ))}
+    </nav>
+  )}
+</header>
+
   );
 };
 
