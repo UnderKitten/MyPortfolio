@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchResumePDF } from "../utils/contentful";
+import LoadingSpinner from "../Components/Loading";
 
 const Resume = () => {
   const [pdfUrl, setPdfUrl] = useState(null);
@@ -9,7 +10,7 @@ const Resume = () => {
   }, []);
 
   if (!pdfUrl) {
-    return <div>Loading resume...</div>;
+    return <LoadingSpinner />;
   }
 
   return (
@@ -26,8 +27,8 @@ const Resume = () => {
       </a>
 
       <iframe
-        src={pdfUrl}
-        className="w-full max-w-5xl h-screen border border-white/20 rounded-lg shadow-lg"
+        src={pdfUrl + "#toolbar=0"}
+        className="w-full h-screen border border-white/20 rounded-lg shadow-lg"
         title="Resume PDF"
       ></iframe>
     </div>
