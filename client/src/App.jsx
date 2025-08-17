@@ -1,23 +1,28 @@
-import React from 'react'
-import Navbar from './Components/Navbar/Navbar'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Home } from './Pages/Home'
-import { NotFound } from './Pages/NotFound'
+import Layout from "./Components/Layout";
+import Home from "./Pages/Home";
+import Projects from "./Pages/Projects";
+import ProjectDetail from "./Pages/ProjectDetail";
+import Resume from "./Pages/Resume";
+import NotFound from "./Pages/NotFound";
+
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route index element={<Home />} />
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<NotFound />}/>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
-      </BrowserRouter>  
+      </Router>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

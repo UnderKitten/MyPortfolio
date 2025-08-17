@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
 * {
-  margin: 0px;
-  padding: 0px;
+  font-family: "Roboto", sans-serif;
 }
 
-body {
-  height: 100vh;
-  background: #161513;
-  color: white;
+@keyframes moveGrid {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 40px 40px; 
+  }
+}
+.animate-grid {
+  animation: moveGrid 10s linear infinite;
 }
