@@ -20,3 +20,9 @@ export async function fetchProjects() {
     gitLink: item.fields.gitLink,
   }));
 }
+
+export async function fetchResumePDF() {
+  const entries = await client.getEntries({ content_type: 'resume' });
+  const pdfFile = entries.items[0]?.fields?.resume;
+  return pdfFile ? 'https:' + pdfFile.fields.file.url : null;
+}
