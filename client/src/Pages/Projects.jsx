@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { fetchProjects } from "../utils/contentful";
 import LoadingSpinner from "../Components/Loading";
 import ErrorMessage from "../Components/ErrorMessage";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const {
@@ -17,8 +18,18 @@ const Projects = () => {
   return (
     <div className="flex flex-wrap gap-6 justify-center">
       {projects &&
-        projects.map((project) => (
-          <ProjectCard key={project.id} {...project} />
+        projects.map((project, idx) => (
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: idx * 0.2,
+            }}
+          >
+            <ProjectCard {...project} />
+          </motion.div>
         ))}
     </div>
   );

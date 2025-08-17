@@ -1,5 +1,6 @@
 import Position from "../Components/Position";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
@@ -24,7 +25,12 @@ const Home = () => {
         />
       </div>
 
-      <div className="pt-25">
+      <motion.div
+        className="pt-25"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1 }}
+      >
         <h2 className="text-[35px] uppercase">
           Let me <span className="text-fuchsia-500">introduce</span> myself
         </h2>
@@ -35,9 +41,14 @@ const Home = () => {
           on ASP.NET Core and React. I thrive on solving complex challenges,
           building modern web apps, and learning new things along the way.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="pt-25">
+      <motion.div
+        className="pt-25"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
+      >
         <h2 className="text-[30px] uppercase">
           Beyond <span className="text-fuchsia-500">code</span>
         </h2>
@@ -49,9 +60,14 @@ const Home = () => {
           something new, whether it’s mastering a musical riff or piloting the
           latest drone.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="pt-25">
+      <motion.div
+        className="pt-25"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 3 }}
+      >
         <h2 className="text-[35px] uppercase mb-4">
           Let's <span className="text-fuchsia-500">connect</span>
         </h2>
@@ -81,7 +97,7 @@ const Home = () => {
           </li>
         </ul>
         <p className="text-[20px]">mchurzin@outlook.com</p>
-      </div>
+      </motion.div>
     </div>
   );
 };
