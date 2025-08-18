@@ -2,6 +2,8 @@ import { useLocation, useParams } from "react-router-dom";
 import useSWR from "swr";
 import { fetchProjects } from "../utils/contentful";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import ErrorMessage from "../Components/ErrorMessage";
 
 const ProjectDetail = () => {
   const location = useLocation();
@@ -26,7 +28,9 @@ const ProjectDetail = () => {
         <h2 className="text-3xl font-bold text-fuchsia-400 mb-2">
           {project.title}
         </h2>
-        <p className="text-white/90 text-lg mb-4">{project.description}</p>
+        <div className="text-white/90 text-lg mb-4 [&_p]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4">
+          {documentToReactComponents(project.description)}
+        </div>
         <div className="flex gap-4 mt-4">
           {project.link && (
             <a
