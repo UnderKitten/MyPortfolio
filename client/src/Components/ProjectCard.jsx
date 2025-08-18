@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const ProjectCard = (props) => {
   return (
-    <div className="relative mx-auto w-full max-w-md rounded-xl bg-white/5 border border-fuchsia-700/40 shadow-lg backdrop-blur-xl p-6 flex flex-col items-center space-y-4">
+    <div className="relative mx-auto w-full max-w-md h-[500px] rounded-xl bg-white/5 border border-fuchsia-700/40 shadow-lg backdrop-blur-xl p-6 flex flex-col items-center space-y-4">
       <img
         src={props.image}
         alt={props.alt}
-        className="w-45 mx-auto mb-4 rounded-lg shadow-md border border-fuchsia-400/30"
+        className="w-44 h-44 mx-auto mb-4 rounded-lg shadow-md border border-fuchsia-400/30 object-cover"
       />
 
       <h2 className="text-3xl font-bold text-fuchsia-400 mb-2">{props.title}</h2>

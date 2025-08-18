@@ -25,7 +25,7 @@ const ProjectDetail = () => {
         />
       </div>
       <div className="w-full lg:w-1/2 flex flex-col gap-4 items-start">
-        <h2 className="text-3xl font-bold text-fuchsia-400 mb-2">
+        <h2 className="text-2xl sm:text-3xl font-bold text-fuchsia-400 mb-2">
           {project.title}
         </h2>
         <div className="text-white/90 text-lg mb-4 [&_p]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4">
