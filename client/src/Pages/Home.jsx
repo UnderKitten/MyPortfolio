@@ -7,14 +7,14 @@ const Home = () => {
     <div className="px-10">
       <div className="flex sm:flex-row flex-col-reverse text-[45px] justify-between items-center gap-1">
         <div>
-          <h1>Hello there!</h1>
-          <h1>
+          <h1 className="text-[30px] sm:text-[45px]">Hello there!</h1>
+          <h1 className="text-[30px] sm:text-[45px]">
             My name is{" "}
             <strong className="text-fuchsia-500 uppercase">
               Maxim Churzin
             </strong>
           </h1>
-          <div className="text-fuchsia-500 font-bold pt-5">
+          <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px]">
             <Position />
           </div>
         </div>
@@ -31,10 +31,10 @@ const Home = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
       >
-        <h2 className="text-[35px] uppercase">
+        <h2 className="uppercase text-[25px] sm:text-[35px]">
           Let me <span className="text-fuchsia-500">introduce</span> myself
         </h2>
-        <p className="text-[25px]">
+        <p className="text-[18px] sm:text-[25px]">
           I’m an experienced software developer with over 5 years delivering
           2D/3D and VR/AR interactive applications using Unity and C#. Currently
           growing my expertise in back-end and full-stack development, focusing
@@ -49,10 +49,10 @@ const Home = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
       >
-        <h2 className="text-[30px] uppercase">
+        <h2 className="uppercase text-[25px] sm:text-[30px]">
           Beyond <span className="text-fuchsia-500">code</span>
         </h2>
-        <p className="text-[25px]">
+        <p className="text-[18px] sm:text-[25px]">
           When I’m not coding, you’ll find me playing soccer, cycling around the
           city, or enjoying video games. I also spend time learning guitar,
           experimenting with 3D printing, and exploring the world of flying
@@ -68,10 +68,10 @@ const Home = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
       >
-        <h2 className="text-[35px] uppercase mb-4">
+        <h2 className="text-[25px] sm:text-[35px] uppercase mb-4">
           Let's <span className="text-fuchsia-500">connect</span>
         </h2>
-        <p className="mb-3 text-[25px]">You can find me on:</p>
+        <p className="mb-3 text-[18px] sm:text-[25px]">You can find me on:</p>
         <ul className="flex gap-6 justify-start mb-4 text-2xl">
           <li>
             <a
@@ -96,7 +96,7 @@ const Home = () => {
             </a>
           </li>
         </ul>
-        <p className="text-[20px]">mchurzin@outlook.com</p>
+        <p className="text-[16px] sm:text-[20px]">mchurzin@outlook.com</p>
       </motion.div>
     </div>
   );
