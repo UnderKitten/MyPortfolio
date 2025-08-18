@@ -1,7 +1,6 @@
 import Position from "../Components/Position";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
-import profilePic from '../assets/profile.jpg';
 
 const Home = () => {
   return (
@@ -21,7 +20,7 @@ const Home = () => {
         </div>
         <img
           className="rounded-full sm:h-100 h-50"
-          src={profilePic}
+          src="/assets/profile.jpg"
           alt="Profile picture"
         />
       </div>
