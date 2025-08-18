@@ -29,7 +29,7 @@ const NavBar = () => {
         <Link
           key={item.name}
           to={item.to}
-          className="text-white/90 hover:text-fuchsia-400 transition-colors duration-300 font-semibold tracking-wide"
+          className="text-white/90 hover:text-fuchsia-400 transition-colors duration-300 font-semibold tracking-wide text-base sm:text-lg"
         >
           {item.name}
         </Link>
