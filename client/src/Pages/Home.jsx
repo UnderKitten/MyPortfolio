@@ -1,6 +1,7 @@
 import Position from "../Components/Position";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
+import profilePic from '../assets/profile.jpg';
 
 const Home = () => {
   return (
@@ -20,16 +21,16 @@ const Home = () => {
         </div>
         <img
           className="rounded-full sm:h-100 h-50"
-          src="../src/assets/profile.jpg"
+          src={profilePic}
           alt="Profile picture"
         />
       </div>
 
       <motion.div
-        className="pt-25"
+        className="pt-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
       >
         <h2 className="text-[35px] uppercase">
           Let me <span className="text-fuchsia-500">introduce</span> myself
@@ -44,10 +45,10 @@ const Home = () => {
       </motion.div>
 
       <motion.div
-        className="pt-25"
+        className="pt-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
+        transition={{ duration: 1, delay: 1 }}
       >
         <h2 className="text-[30px] uppercase">
           Beyond <span className="text-fuchsia-500">code</span>
@@ -63,10 +64,10 @@ const Home = () => {
       </motion.div>
 
       <motion.div
-        className="pt-25"
+        className="pt-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 3 }}
+        transition={{ duration: 1, delay: 1.5 }}
       >
         <h2 className="text-[35px] uppercase mb-4">
           Let's <span className="text-fuchsia-500">connect</span>
