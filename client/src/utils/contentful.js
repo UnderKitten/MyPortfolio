@@ -10,6 +10,7 @@ export async function fetchProjects() {
   return entries.items.map(item => ({
     id: item.sys.id,
     title: item.fields.title,
+    technologies: item.fields.technologies,
     description: item.fields.description,
     shortDescription: item.fields.shortDescription,
     image: item.fields.image

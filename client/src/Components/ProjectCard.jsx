@@ -10,6 +10,7 @@ const ProjectCard = (props) => {
       />
 
       <h2 className="text-3xl font-bold text-fuchsia-400 mb-2 text-center">{props.title}</h2>
+      <h3 className="text-3xl font-bold text-fuchsia-400 mb-2 text-center">{props.technologies}</h3>
 
       <p className="text-white/90 text-xl mb-4 text-center">
         {props.shortDescription}
