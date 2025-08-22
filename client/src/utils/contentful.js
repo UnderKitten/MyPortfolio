@@ -9,6 +9,7 @@ export async function fetchProjects() {
   const entries = await client.getEntries({ content_type: 'project' });
   return entries.items.map(item => ({
     id: item.sys.id,
+    projectId: item.fields.id,
     title: item.fields.title,
     technologies: item.fields.technologies,
     description: item.fields.description,
