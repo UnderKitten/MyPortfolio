@@ -10,6 +10,7 @@ export async function fetchAppData() {
     const entries = await client.getEntries({
       content_type: "mainApplication",
       limit: 1,
+      include: 2,
     });
     const appEntry = entries.items[0];
 
@@ -58,14 +59,6 @@ export async function fetchAppData() {
       resumeUrl: fields.resume.fields.resume.fields.file
         ? "https:" + fields.resume.fields.resume.fields.file.url
         : null,
-
-      skills:
-        fields.skills?.map((skill) => ({
-          skillEntry: skill.fields.skillEntry,
-          skillIcon: skill.fields.skillIcon
-            ? "https:" + skill.fields.skillIcon.fields.file.url
-            : null,
-        })) || [],
     };
   } catch (error) {
     console.error("Error fetching app data:", error);
