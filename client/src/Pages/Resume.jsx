@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
-import { fetchResumePDF } from "../utils/contentful";
 import LoadingSpinner from "../Components/Loading";
+import { useAppData } from "../Contexts/AppDataProvider";
 
 const Resume = () => {
-  const [pdfUrl, setPdfUrl] = useState(null);
+  const { appData, error, isLoading } = useAppData();
+  const pdfUrl = appData?.resumeUrl;
 
-  useEffect(() => {
-    fetchResumePDF().then(setPdfUrl);
-  }, []);
-
-  if (!pdfUrl) {
-    return <LoadingSpinner />;
-  }
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage />;
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-transparent">

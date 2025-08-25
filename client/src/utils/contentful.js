@@ -12,7 +12,6 @@ export async function fetchAppData() {
       limit: 1,
     });
     const appEntry = entries.items[0];
-    console.log(appEntry);
 
     if (!appEntry) return null;
 
@@ -43,10 +42,10 @@ export async function fetchAppData() {
           gitLink: project.fields.gitLink,
         })) || [],
 
-      resumeUrl: fields.resume?.fields?.file?.url
-        ? "https:" + fields.resume.fields.file.url
+      resumeUrl: fields.resume.fields.resume.fields.file
+        ? "https:" + fields.resume.fields.resume.fields.file.url
         : null,
-
+       
       skills:
         fields.skills?.map((skill) => ({
           skillEntry: skill.fields.skillEntry,

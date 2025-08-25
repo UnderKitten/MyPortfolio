@@ -25,7 +25,7 @@ const Home = () => {
             </strong>
           </h1>
           <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px]">
-            <Position />
+            <Position positions= {appData.positions}/>
           </div>
         </div>
         <img
