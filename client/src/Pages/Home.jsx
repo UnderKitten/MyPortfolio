@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useAppData } from "../Contexts/AppDataProvider";
 import LoadingSpinner from "../Components/Loading";
 import ErrorMessage from "../Components/ErrorMessage";
+import Skills from "../Components/Skills";
 
 const Home = () => {
   const { appData, error, isLoading } = useAppData();
@@ -11,7 +12,6 @@ const Home = () => {
   if (error) return <ErrorMessage />;
 
   if (!appData) return <LoadingSpinner />;
-
 
   return (
     <div className="px-10">
@@ -25,7 +25,7 @@ const Home = () => {
             </strong>
           </h1>
           <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px]">
-            <Position positions= {appData.positions}/>
+            <Position positions={appData.positions} />
           </div>
         </div>
         <img
@@ -36,7 +36,7 @@ const Home = () => {
       </div>
 
       <motion.div
-        className="pt-20"
+        className="pt-15"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -44,13 +44,23 @@ const Home = () => {
         <h2 className="uppercase text-[25px] sm:text-[35px]">
           Let me <span className="text-fuchsia-500">introduce</span> myself
         </h2>
-        <p className="text-[18px] sm:text-[25px]">
-          {appData.introduction}
-        </p>
+        <p className="text-[18px] sm:text-[25px]">{appData.introduction}</p>
       </motion.div>
 
       <motion.div
-        className="pt-20"
+        className="pt-15"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.25 }}
+      >
+        <h2 className="uppercase text-[25px] sm:text-[30px] mb-1">
+          My <span className="text-fuchsia-500">Skills</span>
+        </h2>
+        <Skills skillCategories={appData.skillCategories} />
+      </motion.div>
+
+      <motion.div
+        className="pt-15"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
@@ -58,13 +68,11 @@ const Home = () => {
         <h2 className="uppercase text-[25px] sm:text-[30px]">
           Beyond <span className="text-fuchsia-500">code</span>
         </h2>
-        <p className="text-[18px] sm:text-[25px]">
-         {appData.beyondCode}
-        </p>
+        <p className="text-[18px] sm:text-[25px]">{appData.beyondCode}</p>
       </motion.div>
 
       <motion.div
-        className="pt-20"
+        className="pt-15"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
