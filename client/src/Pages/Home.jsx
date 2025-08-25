@@ -1,8 +1,18 @@
 import Position from "../Components/Position";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useAppData } from "../Contexts/AppDataProvider";
+import LoadingSpinner from "../Components/Loading";
+import ErrorMessage from "../Components/ErrorMessage";
 
 const Home = () => {
+  const { appData, error, isLoading } = useAppData();
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage />;
+
+  if (!appData) return <LoadingSpinner />;
+
+
   return (
     <div className="px-10">
       <div className="flex sm:flex-row flex-col-reverse text-[45px] justify-between items-center gap-1">
@@ -35,11 +45,7 @@ const Home = () => {
           Let me <span className="text-fuchsia-500">introduce</span> myself
         </h2>
         <p className="text-[18px] sm:text-[25px]">
-          I’m an experienced software developer with over 5 years delivering
-          2D/3D and VR/AR interactive applications using Unity and C#. Currently
-          growing my expertise in back-end and full-stack development, focusing
-          on ASP.NET Core and React. I thrive on solving complex challenges,
-          building modern web apps, and learning new things along the way.
+          {appData.introduction}
         </p>
       </motion.div>
 
@@ -53,12 +59,7 @@ const Home = () => {
           Beyond <span className="text-fuchsia-500">code</span>
         </h2>
         <p className="text-[18px] sm:text-[25px]">
-          When I’m not coding, you’ll find me playing soccer, cycling around the
-          city, or enjoying video games. I also spend time learning guitar,
-          experimenting with 3D printing, and exploring the world of flying
-          drones. I love hands-on hobbies and am always up for discovering
-          something new, whether it’s mastering a musical riff or piloting the
-          latest drone.
+         {appData.beyondCode}
         </p>
       </motion.div>
 
