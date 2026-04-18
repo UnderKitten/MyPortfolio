@@ -5,7 +5,7 @@ import ProjectDetail from "./Pages/ProjectDetail";
 import Resume from "./Pages/Resume";
 import NotFound from "./Pages/NotFound";
 
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppDataProvider } from "./Contexts/AppDataProvider";
 
 const App = () => {
