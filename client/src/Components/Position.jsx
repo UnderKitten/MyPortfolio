@@ -1,10 +1,10 @@
 import Typewriter from "typewriter-effect";
 
-const Position = () => {
+const Position = ({ positions }) => {
   return (
     <Typewriter 
       options={{
-        strings: [
+        strings: positions || [
           "Software Developer",
           "Product Software Engineer",
           "Interactive Developer",

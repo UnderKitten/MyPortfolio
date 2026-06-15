@@ -1,8 +1,18 @@
 import Position from "../Components/Position";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useAppData } from "../Contexts/AppDataProvider";
+import LoadingSpinner from "../Components/Loading";
+import ErrorMessage from "../Components/ErrorMessage";
+import Skills from "../Components/Skills";
 
 const Home = () => {
+  const { appData, error, isLoading } = useAppData();
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage />;
+
+  if (!appData) return <LoadingSpinner />;
+
   return (
     <div className="px-10">
       <div className="flex sm:flex-row flex-col-reverse text-[45px] justify-between items-center gap-1">
@@ -15,7 +25,7 @@ const Home = () => {
             </strong>
           </h1>
           <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px]">
-            <Position />
+            <Position positions={appData.positions} />
           </div>
         </div>
         <img
@@ -26,7 +36,7 @@ const Home = () => {
       </div>
 
       <motion.div
-        className="pt-20"
+        className="pt-15"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -34,17 +44,23 @@ const Home = () => {
         <h2 className="uppercase text-[25px] sm:text-[35px]">
           Let me <span className="text-fuchsia-500">introduce</span> myself
         </h2>
-        <p className="text-[18px] sm:text-[25px]">
-          I’m an experienced software developer with over 5 years delivering
-          2D/3D and VR/AR interactive applications using Unity and C#. Currently
-          growing my expertise in back-end and full-stack development, focusing
-          on ASP.NET Core and React. I thrive on solving complex challenges,
-          building modern web apps, and learning new things along the way.
-        </p>
+        <p className="text-[18px] sm:text-[25px]">{appData.introduction}</p>
       </motion.div>
 
       <motion.div
-        className="pt-20"
+        className="pt-15"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.25 }}
+      >
+        <h2 className="uppercase text-[25px] sm:text-[30px] mb-1">
+          My <span className="text-fuchsia-500">Skills</span>
+        </h2>
+        <Skills skillCategories={appData.skillCategories} />
+      </motion.div>
+
+      <motion.div
+        className="pt-15"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
@@ -52,18 +68,11 @@ const Home = () => {
         <h2 className="uppercase text-[25px] sm:text-[30px]">
           Beyond <span className="text-fuchsia-500">code</span>
         </h2>
-        <p className="text-[18px] sm:text-[25px]">
-          When I’m not coding, you’ll find me playing soccer, cycling around the
-          city, or enjoying video games. I also spend time learning guitar,
-          experimenting with 3D printing, and exploring the world of flying
-          drones. I love hands-on hobbies and am always up for discovering
-          something new, whether it’s mastering a musical riff or piloting the
-          latest drone.
-        </p>
+        <p className="text-[18px] sm:text-[25px]">{appData.beyondCode}</p>
       </motion.div>
 
       <motion.div
-        className="pt-20"
+        className="pt-15"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
