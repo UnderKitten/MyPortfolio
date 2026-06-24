@@ -8,7 +8,7 @@ const NavBar = () => {
   const navItems = [
     { name: "Home", to: "/" },
     { name: "Projects", to: "/projects" },
-    { name: "Resume", to: "/resume" },
+    // { name: "Resume", to: "/resume" },
   ];
 
   const toggleMenu = () => setShowMenu((prev) => !prev);
