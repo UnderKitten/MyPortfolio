@@ -1,9 +1,11 @@
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
-import Projects from "./Pages/Projects";
-import ProjectDetail from "./Pages/ProjectDetail";
-import Resume from "./Pages/Resume";
-import NotFound from "./Pages/NotFound";
+import { lazy } from "react";
+
+const Projects = lazy(() => import("./Pages/Projects"));
+const ProjectDetail = lazy(() => import("./Pages/ProjectDetail"));
+const Resume = lazy(() => import("./Pages/Resume"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppDataProvider } from "./Contexts/AppDataProvider";

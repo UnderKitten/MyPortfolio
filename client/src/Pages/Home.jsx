@@ -7,11 +7,7 @@ import ErrorMessage from "../Components/ErrorMessage";
 import Skills from "../Components/Skills";
 
 const Home = () => {
-  const { appData, error, isLoading } = useAppData();
-  if (isLoading) return <LoadingSpinner />;
-  if (error) return <ErrorMessage />;
-
-  if (!appData) return <LoadingSpinner />;
+  const { appData, error } = useAppData();
 
   return (
     <div className="px-10">
@@ -24,89 +20,108 @@ const Home = () => {
               Maxim Churzin
             </strong>
           </h1>
-          <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px]">
-            <Position positions={appData.positions} />
+          <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px] min-h-[1.6em]">
+            <Position
+              key={appData ? "loaded" : "default"}
+              positions={appData?.positions}
+            />
           </div>
         </div>
         <img
           className="rounded-full sm:h-100 h-50"
-          src="/assets/profile.jpg"
+          src="/assets/profile-400.webp"
+          srcSet="/assets/profile-400.webp 400w, /assets/profile-800.webp 800w"
+          sizes="(min-width: 640px) 361px, 181px"
+          width="400"
+          height="443"
+          fetchPriority="high"
+          decoding="async"
           alt="Profile picture"
         />
       </div>
 
+      {error && <ErrorMessage />}
+      {!appData && !error && (
+        <div className="min-h-[900px]">
+          <LoadingSpinner />
+        </div>
+      )}
+      {appData && (
+        <>
       <motion.div
-        className="pt-15"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
-      >
-        <h2 className="uppercase text-[25px] sm:text-[35px]">
-          Let me <span className="text-fuchsia-500">introduce</span> myself
-        </h2>
-        <p className="text-[18px] sm:text-[25px]">{appData.introduction}</p>
-      </motion.div>
-
-      <motion.div
-        className="pt-15"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.25 }}
-      >
-        <h2 className="uppercase text-[25px] sm:text-[30px] mb-1">
-          My <span className="text-fuchsia-500">Skills</span>
-        </h2>
-        <Skills skillCategories={appData.skillCategories} />
-      </motion.div>
-
-      <motion.div
-        className="pt-15"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-      >
-        <h2 className="uppercase text-[25px] sm:text-[30px]">
-          Beyond <span className="text-fuchsia-500">code</span>
-        </h2>
-        <p className="text-[18px] sm:text-[25px]">{appData.beyondCode}</p>
-      </motion.div>
-
-      <motion.div
-        className="pt-15"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-      >
-        <h2 className="text-[25px] sm:text-[35px] uppercase mb-4">
-          Let's <span className="text-fuchsia-500">connect</span>
-        </h2>
-        <p className="mb-3 text-[18px] sm:text-[25px]">You can find me on:</p>
-        <ul className="flex gap-6 justify-start mb-4 text-2xl">
-          <li>
-            <a
-              href="https://github.com/UnderKitten"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="hover:text-fuchsia-500"
-            >
-              <FaGithub />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/maximchurzin/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="hover:text-fuchsia-500"
-            >
-              <FaLinkedin />
-            </a>
-          </li>
-        </ul>
-        <p className="text-[16px] sm:text-[20px]">mchurzin@outlook.com</p>
-      </motion.div>
+          className="pt-15"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="uppercase text-[25px] sm:text-[35px]">
+            Let me <span className="text-fuchsia-500">introduce</span> myself
+          </h2>
+          <p className="text-[18px] sm:text-[25px]">{appData.introduction}</p>
+        </motion.div>
+  
+        <motion.div
+          className="pt-15"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="uppercase text-[25px] sm:text-[30px] mb-1">
+            My <span className="text-fuchsia-500">Skills</span>
+          </h2>
+          <Skills skillCategories={appData.skillCategories} />
+        </motion.div>
+  
+        <motion.div
+          className="pt-15"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="uppercase text-[25px] sm:text-[30px]">
+            Beyond <span className="text-fuchsia-500">code</span>
+          </h2>
+          <p className="text-[18px] sm:text-[25px]">{appData.beyondCode}</p>
+        </motion.div>
+  
+        <motion.div
+          className="pt-15"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-[25px] sm:text-[35px] uppercase mb-4">
+            Let's <span className="text-fuchsia-500">connect</span>
+          </h2>
+          <p className="mb-3 text-[18px] sm:text-[25px]">You can find me on:</p>
+          <ul className="flex gap-6 justify-start mb-4 text-2xl">
+            <li>
+              <a
+                href="https://github.com/UnderKitten"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="hover:text-fuchsia-500"
+              >
+                <FaGithub />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/maximchurzin/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="hover:text-fuchsia-500"
+              >
+                <FaLinkedin />
+              </a>
+            </li>
+          </ul>
+          <p className="text-[16px] sm:text-[20px]">mchurzin@outlook.com</p>
+        </motion.div>
+        </>
+      )}
     </div>
   );
 };

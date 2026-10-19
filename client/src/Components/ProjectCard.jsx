@@ -6,6 +6,9 @@ const ProjectCard = (props) => {
       <img
         src={props.image}
         alt={props.alt}
+        width="176"
+        height="176"
+        loading="lazy"
         className="w-44 h-44 mx-auto mb-4 rounded-lg shadow-md border border-fuchsia-400/30 object-cover"
       />
 

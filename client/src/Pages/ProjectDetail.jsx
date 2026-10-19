@@ -19,7 +19,7 @@ const ProjectDetail = () => {
     <div className="flex flex-col lg:flex-row gap-8 items-center mt-8 mx-auto max-w-7xl rounded-xl bg-white/5 border border-fuchsia-700/40 shadow-lg backdrop-blur-xl p-8">
       <div className="w-full lg:w-1/2 flex justify-center items-center">
         <img
-          src={project.image}
+          src={project.imageLarge || project.image}
           alt={project.title}
           className="rounded-lg shadow-md w-full max-w-md object-contain"
         />

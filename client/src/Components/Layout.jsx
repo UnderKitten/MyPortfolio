@@ -1,6 +1,8 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import LoadingSpinner from "./Loading";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
@@ -16,7 +18,9 @@ const Layout = () => (
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-fuchsia-500/10 to-transparent"></div>
 
     <div className="relative z-10">
-      <Outlet />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Outlet />
+      </Suspense>
     </div>
   </main>
   
