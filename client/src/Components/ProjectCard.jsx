@@ -19,7 +19,7 @@ const ProjectCard = (props) => {
         {props.shortDescription}
       </p>
       <div className="flex gap-10 mt-auto">
-        <Link to={`/projects/${props.id}`} className="flex items-center gap-2 px-4 py-2 rounded bg-fuchsia-600/70 hover:bg-fuchsia-800 text-white font-semibold shadow transition">
+        <Link to={`/projects/${props.id}`} state={{ fromProjects: true }} className="flex items-center gap-2 px-4 py-2 rounded bg-fuchsia-600/70 hover:bg-fuchsia-800 text-white font-semibold shadow transition">
           Read more
         </Link>
       </div>

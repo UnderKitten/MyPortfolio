@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Position from "../Components/Position";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -26,6 +27,12 @@ const Home = () => {
               positions={appData?.positions}
             />
           </div>
+          <Link
+            to="/projects"
+            className="inline-block mt-4 px-6 py-3 rounded bg-fuchsia-600/80 hover:bg-fuchsia-700 text-white text-lg font-semibold shadow transition"
+          >
+            View my projects
+          </Link>
         </div>
         <img
           className="rounded-full h-50 sm:h-72 lg:h-100 w-auto shrink-0"

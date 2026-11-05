@@ -50,8 +50,3 @@ export async function fetchAppData() {
       : null,
   };
 }
-
-export async function fetchResumePDF() {
-  const appData = await fetchAppData();
-  return appData?.resumeUrl || null;
-}
