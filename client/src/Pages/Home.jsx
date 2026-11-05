@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div className="px-10">
-      <div className="flex sm:flex-row flex-col-reverse text-[45px] justify-between items-center gap-1">
+      <div className="flex lg:flex-row flex-col-reverse text-[45px] justify-between items-center gap-1">
         <div>
           <h1 className="text-[30px] sm:text-[45px]">Hello there!</h1>
           <h1 className="text-[30px] sm:text-[45px]">
@@ -20,7 +20,7 @@ const Home = () => {
               Maxim Churzin
             </strong>
           </h1>
-          <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px] min-h-[1.6em]">
+          <div className="text-fuchsia-500 font-bold pt-5 text-[30px] sm:text-[45px] min-h-[calc(3em+1.25rem)] xl:min-h-[1.6em]">
             <Position
               key={appData ? "loaded" : "default"}
               positions={appData?.positions}
@@ -28,10 +28,10 @@ const Home = () => {
           </div>
         </div>
         <img
-          className="rounded-full sm:h-100 h-50"
+          className="rounded-full h-50 sm:h-72 lg:h-100 w-auto shrink-0"
           src="/assets/profile-400.webp"
           srcSet="/assets/profile-400.webp 400w, /assets/profile-800.webp 800w"
-          sizes="(min-width: 640px) 361px, 181px"
+          sizes="(min-width: 1024px) 361px, (min-width: 640px) 260px, 181px"
           width="400"
           height="443"
           fetchPriority="high"

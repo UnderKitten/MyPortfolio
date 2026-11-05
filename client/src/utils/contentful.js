@@ -51,11 +51,6 @@ export async function fetchAppData() {
   };
 }
 
-export async function fetchProjects() {
-  const appData = await fetchAppData();
-  return appData?.projects || [];
-}
-
 export async function fetchResumePDF() {
   const appData = await fetchAppData();
   return appData?.resumeUrl || null;

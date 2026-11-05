@@ -1,19 +1,28 @@
-import { useLocation, useParams } from "react-router-dom";
-import useSWR from "swr";
-import { fetchProjects } from "../utils/contentful";
+import { useParams } from "react-router-dom";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ErrorMessage from "../Components/ErrorMessage";
+import LoadingSpinner from "../Components/Loading";
+import { useAppData } from "../Contexts/AppDataProvider";
+import NotFound from "./NotFound";
 
 const ProjectDetail = () => {
-  const location = useLocation();
   const { id } = useParams();
-  const { project: passedProject } = location.state || {};
-  const { data: projects } = useSWR("projects", fetchProjects);
+  const { appData, error, isLoading } = useAppData();
 
-  const project = passedProject || projects?.find((p) => p.id === id);
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage />;
 
-  if (!project) return <ErrorMessage />;
+  const project = appData?.projects.find((p) => p.id === id);
+
+  if (!project) {
+    return (
+      <NotFound
+        title="Project not found"
+        message="This project may have moved or been removed."
+      />
+    );
+  }
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 items-center mt-8 mx-auto max-w-7xl rounded-xl bg-white/5 border border-fuchsia-700/40 shadow-lg backdrop-blur-xl p-8">

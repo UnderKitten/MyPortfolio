@@ -12,7 +12,7 @@ const Projects = () => {
   if (error) return <ErrorMessage />;
 
   return (
-    <div className="flex flex-wrap gap-6 justify-center">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,22rem),28rem))] auto-rows-fr justify-center gap-6">
       {projects &&
         projects
           .slice()
