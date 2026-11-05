@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import ErrorMessage from "../Components/ErrorMessage";
 import LoadingSpinner from "../Components/Loading";
@@ -15,7 +15,11 @@ const ProjectDetail = () => {
   if (isLoading) return <LoadingSpinner />;
   if (error) return <ErrorMessage />;
 
-  const project = appData?.projects.find((p) => p.id === id);
+  const projects = appData?.projects || [];
+  const index = projects.findIndex((p) => p.id === id);
+  const project = projects[index];
+  const previousProject = projects[index - 1];
+  const nextProject = projects[index + 1];
 
   if (!project) {
     return (
@@ -81,6 +85,30 @@ const ProjectDetail = () => {
           </div>
         </div>
       </div>
+      <nav aria-label="Other projects" className="grid grid-cols-2 gap-4 mt-6">
+        {previousProject && (
+          <Link
+            to={`/projects/${previousProject.id}`}
+            className="col-start-1 flex flex-col items-start gap-1 text-white/90 hover:text-fuchsia-400 transition-colors"
+          >
+            <span className="flex items-center gap-2 text-sm">
+              <FaArrowLeft /> Previous
+            </span>
+            <span className="font-semibold">{previousProject.title}</span>
+          </Link>
+        )}
+        {nextProject && (
+          <Link
+            to={`/projects/${nextProject.id}`}
+            className="col-start-2 flex flex-col items-end gap-1 text-right text-white/90 hover:text-fuchsia-400 transition-colors"
+          >
+            <span className="flex items-center gap-2 text-sm">
+              Next <FaArrowRight />
+            </span>
+            <span className="font-semibold">{nextProject.title}</span>
+          </Link>
+        )}
+      </nav>
     </div>
   );
 };

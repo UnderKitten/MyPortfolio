@@ -6,6 +6,13 @@ const optimized = (asset, width) => {
   return `https:${url}?w=${width}&fm=webp&q=80`;
 };
 
+const byProjectId = (a, b) => {
+  if (typeof a.projectId === "number" && typeof b.projectId === "number") {
+    return a.projectId - b.projectId;
+  }
+  return a.projectId.toString().localeCompare(b.projectId.toString());
+};
+
 export async function fetchAppData() {
   const res = await fetch("/api/contentful");
   if (!res.ok) throw new Error("Failed to fetch app data");
@@ -32,7 +39,7 @@ export async function fetchAppData() {
         imageAltTitle: project.fields.altTitle,
         link: project.fields.link,
         gitLink: project.fields.gitLink,
-      })) || [],
+      })).sort(byProjectId) || [],
 
     skillCategories: fields.skillCategories.map((category) => ({
       id: category.sys.id,
