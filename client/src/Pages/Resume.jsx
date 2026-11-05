@@ -1,4 +1,5 @@
 import LoadingSpinner from "../Components/Loading";
+import ErrorMessage from "../Components/ErrorMessage";
 import { useAppData } from "../Contexts/AppDataProvider";
 
 const Resume = () => {

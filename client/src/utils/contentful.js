@@ -1,3 +1,18 @@
+// Contentful Images API: resize and serve WebP instead of the original upload.
+const optimized = (asset, width) => {
+  if (!asset) return null;
+  const { url, contentType } = asset.fields.file;
+  if (contentType === "image/svg+xml") return `https:${url}`;
+  return `https:${url}?w=${width}&fm=webp&q=80`;
+};
+
+const byProjectId = (a, b) => {
+  if (typeof a.projectId === "number" && typeof b.projectId === "number") {
+    return a.projectId - b.projectId;
+  }
+  return a.projectId.toString().localeCompare(b.projectId.toString());
+};
+
 export async function fetchAppData() {
   const res = await fetch("/api/contentful");
   if (!res.ok) throw new Error("Failed to fetch app data");
@@ -6,9 +21,7 @@ export async function fetchAppData() {
 
   return {
     title: fields.applicationTitle,
-    profilePhoto: fields.profilePhoto
-      ? "https:" + fields.profilePhoto.fields.file.url
-      : null,
+    profilePhoto: optimized(fields.profilePhoto, 800),
     positions: fields.positions || [],
     introduction: fields.introduction,
     beyondCode: fields.beyondCode,
@@ -21,13 +34,12 @@ export async function fetchAppData() {
         technologies: project.fields.technologies,
         description: project.fields.description,
         shortDescription: project.fields.shortDescription,
-        image: project.fields.image
-          ? "https:" + project.fields.image.fields.file.url
-          : null,
+        image: optimized(project.fields.image, 352),
+        imageLarge: optimized(project.fields.image, 900),
         imageAltTitle: project.fields.altTitle,
         link: project.fields.link,
         gitLink: project.fields.gitLink,
-      })) || [],
+      })).sort(byProjectId) || [],
 
     skillCategories: fields.skillCategories.map((category) => ({
       id: category.sys.id,
@@ -36,9 +48,7 @@ export async function fetchAppData() {
         category.fields.skills?.map((skill) => ({
           id: skill.sys.id,
           name: skill.fields.skillEntry,
-          icon: skill.fields.skillIcon
-            ? "https:" + skill.fields.skillIcon.fields.file.url
-            : null,
+          icon: optimized(skill.fields.skillIcon, 48),
         })) || [],
     })),
 
@@ -46,14 +56,4 @@ export async function fetchAppData() {
       ? "https:" + fields.resume.fields.resume.fields.file.url
       : null,
   };
-}
-
-export async function fetchProjects() {
-  const appData = await fetchAppData();
-  return appData?.projects || [];
-}
-
-export async function fetchResumePDF() {
-  const appData = await fetchAppData();
-  return appData?.resumeUrl || null;
 }

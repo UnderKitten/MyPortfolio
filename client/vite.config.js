@@ -10,7 +10,10 @@ export default defineConfig({
     alias: { "@": path.resolve(__dirname, "./src") }
   },
   server: {
-    historyApiFallback: true,  
+    historyApiFallback: true, 
+    proxy: {
+    '/api': { target: 'https://chumax.vercel.app', changeOrigin: true },
+  }, 
   },
   preview: {
     historyApiFallback: true,  

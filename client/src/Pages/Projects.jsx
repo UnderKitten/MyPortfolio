@@ -12,32 +12,20 @@ const Projects = () => {
   if (error) return <ErrorMessage />;
 
   return (
-    <div className="flex flex-wrap gap-6 justify-center">
-      {projects &&
-        projects
-          .slice()
-          .sort((a, b) => {
-            if (
-              typeof a.projectId === "number" &&
-              typeof b.projectId === "number"
-            ) {
-              return a.projectId - b.projectId;
-            }
-            return a.projectId.toString().localeCompare(b.projectId.toString());
-          })
-          .map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: idx * 0.2,
-              }}
-            >
-              <ProjectCard {...project} />
-            </motion.div>
-          ))}
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,22rem),28rem))] auto-rows-fr justify-center gap-6">
+      {projects.map((project, idx) => (
+        <motion.div
+          key={project.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: idx * 0.2,
+          }}
+        >
+          <ProjectCard {...project} />
+        </motion.div>
+      ))}
     </div>
   );
 };

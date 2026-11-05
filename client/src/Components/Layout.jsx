@@ -1,6 +1,9 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import LoadingSpinner from "./Loading";
+import ScrollToTop from "./ScrollToTop";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
@@ -8,6 +11,7 @@ import "../index.css";
 
 const Layout = () => (
   <div className="min-h-screen flex flex-col text-white">
+  <ScrollToTop />
   <Navbar />
 
   <main className="relative flex-1 pt-30 pb-10 px-4 sm:px-10 bg-gray-900 overflow-hidden">
@@ -16,7 +20,9 @@ const Layout = () => (
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-fuchsia-500/10 to-transparent"></div>
 
     <div className="relative z-10">
-      <Outlet />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Outlet />
+      </Suspense>
     </div>
   </main>
   

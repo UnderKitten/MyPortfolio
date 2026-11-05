@@ -29,6 +29,9 @@ const Skills = ({ skillCategories }) => {
                   <img
                     src={skill.icon}
                     alt={`${skill.name} icon`}
+                    width="16"
+                    height="16"
+                    loading="lazy"
                     className="w-4 h-4 object-contain opacity-90"
                   />
                 )}
